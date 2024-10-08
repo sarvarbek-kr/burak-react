@@ -14,12 +14,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <Router> 
-      <App />
-    </Router> 
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router> 
+         <App />
+        </Router> 
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

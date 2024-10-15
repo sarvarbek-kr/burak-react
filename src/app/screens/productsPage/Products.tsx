@@ -25,114 +25,121 @@ export default function Products () {
   return (
     <div className={"products"}>
       <Container>
-        {/* <Stack className={"avatar-big-box"}>
-            <Stack className={"top-text"}>
-                <p>Burak Restaurant</p>
-                <Stack className="search-bar">
-                    <input/>
-                    <Button ></Button>
+        <Stack flexDirection={'column'} alignItems={'center'}>
+
+            <Stack className={"avatar-big-box"} justifyContent={'space-between'}>
+                    <p>Burak Restaurant</p>
+                    <Stack flexDirection={'row'} position={'relative'} alignItems={'center'}>
+                       <input type="search" placeholder="Type here"/>
+                       <button className="search-btn" color={"primary"}>SEARCH
+                        <SearchIcon/>
+                       </button>
+                    </Stack>
+            </Stack>
+
+            <Stack className={"dishes-filter-section"}>
+                <Stack className={"dishes-filter-box"}>
+                    <Button
+                        variant={"contained"}
+                        color={"primary"}
+                        className={"order"}>
+                            New
+                    </Button>
+                    <Button
+                        variant={"contained"}
+                        color={"secondary"}
+                        className={"order"}>
+                            Price
+                    </Button>
+                    <Button
+                        variant={"contained"}
+                        color={"secondary"}
+                        className={"order"}>
+                            Views
+                    </Button>
                 </Stack>
             </Stack>
-        </Stack> */}
-        <Stack className={"dishes-filter-section"}>
-            <Stack className={"dishes-filter-box"}>
-                <Button
-                    variant={"contained"}
-                    color={"primary"}
-                    className={"order"}>
-                        New
-                </Button>
-                <Button
-                    variant={"contained"}
-                    color={"secondary"}
-                    className={"order"}>
-                        Price
-                </Button>
-                <Button
-                    variant={"contained"}
-                    color={"secondary"}
-                    className={"order"}>
-                        Views
-                </Button>
-            </Stack>
-        </Stack>
-        <Stack className={"list-category-section"}>
-            <Stack className={"product-category"}>
-                <div className={"category-main"}>
-                    <Button variant={"contained"} color={"secondary"}>
-                        Other
-                    </Button>
-                    <Button variant={"contained"} color={"secondary"}>
-                        Dessert
-                    </Button>
-                    <Button variant={"contained"} color={"secondary"}>
-                        Drink
-                    </Button>
-                    <Button variant={"contained"} color={"secondary"}>
-                        Salad
-                    </Button>
-                    <Button variant={"contained"} color={"primary"}>
-                        Dish
-                    </Button>
-                </div>
-            </Stack>
-            <Stack className={"product-wrapper"}>
-                {products.length !== 0 ? (
-                    products.map((product, index) => {
-                        return (
-                           <Stack key={index} className={"product-card"}>
-                            <Stack
-                              className={"product-img"}
-                              sx={{ backgroundImage: `url(${product.imagePath})`}} >
-                              <div className={"product-scale"}>Normal size</div>
-                              <Button className={"shop-btn"}>
-                                <img 
-                                   src={"/icons/shopping-cart.svg"}
-                                   style={{ display: "flex "}}
-                                />
-                              </Button>
-                              <Button className={"view-btn"} sx={{ right: "36px"}}>
-                                 <Badge badgeContent={20} color={"secondary"}>
-                                    <RemoveRedEyeIcon
-                                    sx={{
-                                        color: 20 ? "white" : "gray",
-                                    }}
+
+            <Stack className={"list-category-section"}>
+                <Stack className={"product-category"}>
+                    <div className={"category-main"}>
+                        <Button variant={"contained"} color={"secondary"}>
+                            Other
+                        </Button>
+                        <Button variant={"contained"} color={"secondary"}>
+                            Dessert
+                        </Button>
+                        <Button variant={"contained"} color={"secondary"}>
+                            Drink
+                        </Button>
+                        <Button variant={"contained"} color={"secondary"}>
+                            Salad
+                        </Button>
+                        <Button variant={"contained"} color={"primary"}>
+                            Dish
+                        </Button>
+                    </div>
+                </Stack>
+                <Stack className={"product-wrapper"}>
+                    {products.length !== 0 ? (
+                        products.map((product, index) => {
+                            return (
+                            <Stack key={index} className={"product-card"}>
+                                <Stack
+                                className={"product-img"}
+                                sx={{ backgroundImage: `url(${product.imagePath})`}} >
+                                <div className={"product-scale"}>Normal size</div>
+                                <Button className={"shop-btn"}>
+                                    <img 
+                                    src={"/icons/shopping-cart.svg"}
+                                    style={{ display: "flex "}}
                                     />
-                                 </Badge>
-                              </Button>
+                                </Button>
+                                <Button className={"view-btn"} sx={{ right: "36px"}}>
+                                    <Badge badgeContent={20} color={"secondary"}>
+                                        <RemoveRedEyeIcon
+                                        sx={{
+                                            color: 20 ? "white" : "gray",
+                                        }}
+                                        />
+                                    </Badge>
+                                </Button>
+                                </Stack>
+                                <Box className={"product-desc"}>
+                                    <span className={"product-tittle"}>
+                                        {product.productName}
+                                    </span>
+                                    <div className={"product-desc"}>
+                                        <MonetizationOnIcon/>
+                                        {13}
+                                    </div>
+                                </Box>
                             </Stack>
-                            <Box className={"product-desc"}>
-                                <span className={"product-tittle"}>
-                                    {product.productName}
-                                </span>
-                                <div className={"product-desc"}>
-                                    <MonetizationOnIcon/>
-                                    {13}
-                                </div>
-                            </Box>
-                           </Stack>
-                        );
-                    })
-                ) : (
-                    <Box className="no-data">Products are not available</Box>
-                )}
+                            );
+                        })
+                    ) : (
+                        <Box className="no-data">Products are not available</Box>
+                    )}
+                </Stack>
             </Stack>
-        </Stack>
-        <Stack className={"pagination-section"}>
-            <Pagination
-            count={3}
-            page={1}
-            renderItem={(item) => (
-                <PaginationItem
-                  components={{
-                    previous: ArrowBackIcon,
-                    next: ArrowForwardIcon,
-                  }}
-                  {...item}
-                  color={"secondary"}
-                />
-            )}
-           />
+
+            <Stack className={"pagination-section"}>
+                <Pagination
+                count={3}
+                page={1}
+                renderItem={(item) => (
+                    <PaginationItem
+                    components={{
+                        previous: ArrowBackIcon,
+                        next: ArrowForwardIcon,
+                    }}
+                    {...item}
+                    color={"secondary"}
+                    />
+                )}
+            />
+            </Stack>
+
         </Stack>
       </Container>
 
